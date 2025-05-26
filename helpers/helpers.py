@@ -27,6 +27,18 @@ def response_time(x, y, city):
     return 1.7 + 3.4 * cost
 
 
-# To define
-def cost_of(x, y, city):
-    print("Hello define me pls")
+def cost_of(x, y, city): 
+    total_cost = 0
+
+    for i in range(len(city)): # Loop over all positions
+        for j in range(len(city[0])):
+            if i == x and j == y: # Skip the proposed location
+                continue  
+            fire_freq = city[i][j]
+            print(f"Checking ({i}, {j}) with fire frequency: {fire_freq}")
+            total_cost += distance_of(i, j, x, y, fire_freq) # Total cost
+
+    return total_cost
+
+def distance_of(x1, y1, x2, y2, fire_freq):
+    print("Distance")
