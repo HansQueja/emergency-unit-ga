@@ -1,4 +1,5 @@
 import random
+from config import CROSSOVER_RATE
 
 def uniform_crossover(parents, city, population_size):
     """Perform uniform crossover between pairs of parents"""
@@ -14,12 +15,12 @@ def uniform_crossover(parents, city, population_size):
             x2, y2 = city.coord_of(parent2)
             
             # For each coordinate, randomly select from either parent
-            if random.random() < 0.5:
+            if random.random() < CROSSOVER_RATE:
                 child_x = x1
             else:
                 child_x = x2
                 
-            if random.random() < 0.5:
+            if random.random() < CROSSOVER_RATE:
                 child_y = y1
             else:
                 child_y = y2
