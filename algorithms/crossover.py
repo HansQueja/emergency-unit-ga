@@ -14,16 +14,20 @@ def uniform_crossover(parents, city, population_size):
             x1, y1 = city.coord_of(parent1)
             x2, y2 = city.coord_of(parent2)
             
-            # For each coordinate, randomly select from either parent
             if random.random() < CROSSOVER_RATE:
-                child_x = x1
+                # For each coordinate, randomly select from either parent
+                if random.random() < 0.5:
+                    child_x = x1
+                else:
+                    child_x = x2
+                    
+                if random.random() < 0.5:
+                    child_y = y1
+                else:
+                    child_y = y2
+
             else:
-                child_x = x2
-                
-            if random.random() < CROSSOVER_RATE:
-                child_y = y1
-            else:
-                child_y = y2
+                child_x, child_y = (x1, y1) if random.random() < 0.5 else (x2, y2)
             
             # Convert back to linear index
             location = city.index_from_coord(child_x, child_y)
